@@ -21,3 +21,5 @@ Obviously, Aerialist is in its early stages of development. As the specification
 
 # Contributing
 The ZDF project as a whole needs your support. If you're interested in working on Aerialist or any of the other pieces of the project, email [rtbenfield@gmail.com](mailto:rtbenfield@gmail.com).
+
+This project is in need of developers experienced in manipulating HTML for rendering in a customized way. To be specific, the contents of the document need to be parsed and rendered in individual pages (ex. 8 1/2" x 11"). The challenge to this is detecting the best page break location and trimming the HTML appropriately to carryover to a new page.
