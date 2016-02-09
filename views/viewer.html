@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aerialist</title>
+    <style>
+      body {
+        background-color: #000;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <webview id="zdfContainer" autosize="on"></webview>
+    <script>
+      (function() {
+        var ipc = require('ipc');
+        ipc.on('viewer:open', (zdf) => {
+          console.log(zdf);
+          document.title = zdf.zdfInfo.manifest.title;
+          var zdfContainer = document.querySelector('#zdfContainer');
+          zdfContainer.src = `file:\\\\${zdf.tempLocation}\\${zdf.zdfInfo.manifest.mainFile}`;
+          // var page = zdf.zdfInfo.manifest.page || {};
+          // zdfContainer.minwidth = zdfContainer.maxwidth = page.width || '40';
+          // zdfContainer.minheight = zdfContainer.maxheight = page.height || '60';
+        });
+      })();
+    </script>
+  </body>
+</html>

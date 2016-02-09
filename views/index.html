@@ -1,11 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using io.js <script>document.write(process.version)</script>
-    and Electron <script>document.write(process.versions['electron'])</script>.
-  </body>
+
+<head>
+  <title>Aerialist</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center">Aerialist</h1>
+
+    <form id="openForm">
+      <input type="hidden" id="verificationKey" name="verificationKey" />
+      <input type="hidden" id="decryptionKey" name="decryptionKey" />
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+          <button class="btn btn-primary btn-lg btn-block" type="submit" id="openButton">
+            <i class="fa fa-folder-open-o"></i>&nbsp;Open ZDF
+          </button>
+
+          <button class="btn btn-primary btn-lg btn-block" type="button" id="selectVerificationKeyButton">
+            <i class="fa fa-folder-open-o"></i>&nbsp;Select Verification Key
+          </button>
+
+          <button class="btn btn-primary btn-lg btn-block" type="button" id="selectDecryptionKeyButton">
+            <i class="fa fa-folder-open-o"></i>&nbsp;Select Decryption Key
+          </button>
+
+          <div class="form-group">
+            <label>Decryption Key Passphrase</label>
+            <input type="password" name="decryptionKeyPassphrase" class="form-control" />
+          </div>
+        </div>
+    </form>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var ipc = require('electron').ipcRenderer;
+      
+      document.querySelector('#openForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var inputs = this.querySelectorAll('input[name],textarea[name],select[name]');
+        var form = {};
+        for (var i = 0; i < inputs.length; i++) {
+          var input = inputs[i];
+          form[input.name] = input.value;
+        }
+
+        ipc.send('application:open-zdf', form);
+      });
+
+      document.querySelector('#selectVerificationKeyButton').addEventListener('click', () => {
+        ipc.send('application:select-open-file', {
+          key: 'verificationKey'
+        });
+      });
+
+      document.querySelector('#selectDecryptionKeyButton').addEventListener('click', () => {
+        ipc.send('application:select-open-file', {
+          key: 'decryptionKey'
+        });
+      });
+
+      ipc.on('application:file-selected', (file, options) => {
+        var button;
+        switch (options.key) {
+          case 'verificationKey':
+            document.querySelector('#verificationKey').value = file;
+            button = document.querySelector('#selectVerificationKeyButton');
+            break;
+          case 'decryptionKey':
+            document.querySelector('#decryptionKey').value = file;
+            button = document.querySelector('#selectDecryptionKeyButton');
+            break;
+        }
+        if (button) {
+          button.classList.toggle('btn-success', !!file);
+        }
+      });
+    })();
+  </script>
+</body>
+
 </html>
