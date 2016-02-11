@@ -12,11 +12,9 @@
   ],
   "author": "Tyler Benfield <rtbenfield@gmail.com> (http://rtblogfield.appspot.com/)",
   "license": "MIT",
-  "devDependencies": {
-    "electron-prebuilt": "^0.36.7"
-  },
   "dependencies": {
     "bootstrap": "^3.3.6",
+    "electron-prebuilt": "^0.36.7",
     "font-awesome": "^4.5.0",
     "fstream": "^1.0.8",
     "jquery": "^2.2.0",

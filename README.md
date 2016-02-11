@@ -6,14 +6,13 @@ This project is developed alongside the ZDF specification. It is in no way ready
 # Usage
 Requirements:
 * Node.js
-* Grunt
 
 To run Aerialist:
 
 1. Clone the repository locally
 1. Clone `node-zdf` locally (for the moment, Aerialist uses the local version. This will be a dependency in the future)
 1. Run `npm install` from the root directory to pull dependencies
-1. Run `grunt` from the root directory to start the application
+1. Run `npm start` from the root directory to start the application
 
 The application will first prompt for a ZDF file to open. Next, it will begin opening the file and **attempting** to display its contents. The display is still a work in progress.
 
