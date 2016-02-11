@@ -10,7 +10,7 @@
   "keywords": [
     "zdf"
   ],
-  "author": "Tyler Benfield <rtbenfield@gmail.com> (http://rtblogfield.appspot.com/)",
+  "author": "Tyler Benfield <rtbenfield@gmail.com> (http://tylerbenfield.me/)",
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.3.6",
