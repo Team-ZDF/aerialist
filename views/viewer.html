@@ -14,8 +14,8 @@
     <webview id="zdfContainer" autosize="on"></webview>
     <script>
       (function() {
-        var ipc = require('ipc');
-        ipc.on('viewer:open', (zdf) => {
+        const {ipcRenderer} = require('electron');
+        ipcRenderer.on('viewer:open', (zdf) => {
           console.log(zdf);
           document.title = zdf.zdfInfo.manifest.title;
           var zdfContainer = document.querySelector('#zdfContainer');

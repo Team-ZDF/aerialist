@@ -14,11 +14,11 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "electron-prebuilt": "^0.36.7",
-    "font-awesome": "^4.5.0",
-    "fstream": "^1.0.8",
-    "jquery": "^2.2.0",
-    "jsdom": "^5.6.1",
+    "electron-prebuilt": "^1.2.1",
+    "font-awesome": "^4.6.3",
+    "fstream": "^1.0.9",
+    "jquery": "^2.2.4",
+    "jsdom": "^9.2.1",
     "tar": "^2.2.1",
     "temp": "^0.8.3"
   },

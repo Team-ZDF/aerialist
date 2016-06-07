@@ -40,8 +40,8 @@
 
   <script>
     (function() {
-      var ipc = require('electron').ipcRenderer;
-      
+      const {ipcRenderer} = require('electron');
+
       document.querySelector('#openForm').addEventListener('submit', function(e) {
         e.preventDefault();
         var inputs = this.querySelectorAll('input[name],textarea[name],select[name]');
@@ -51,22 +51,22 @@
           form[input.name] = input.value;
         }
 
-        ipc.send('application:open-zdf', form);
+        ipcRenderer.send('application:open-zdf', form);
       });
 
       document.querySelector('#selectVerificationKeyButton').addEventListener('click', () => {
-        ipc.send('application:select-open-file', {
+        ipcRenderer.send('application:select-open-file', {
           key: 'verificationKey'
         });
       });
 
       document.querySelector('#selectDecryptionKeyButton').addEventListener('click', () => {
-        ipc.send('application:select-open-file', {
+        ipcRenderer.send('application:select-open-file', {
           key: 'decryptionKey'
         });
       });
 
-      ipc.on('application:file-selected', (file, options) => {
+      ipcRenderer.on('application:file-selected', (file, options) => {
         var button;
         switch (options.key) {
           case 'verificationKey':

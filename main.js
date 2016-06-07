@@ -1,10 +1,10 @@
 'use strict';
 
 const electron = require('electron');
-const app = electron.app;  // Module to control application life.
-const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
-const dialog = electron.dialog;
-const ipcMain = electron.ipcMain;
+
+// Module to control application life.
+// Module to create native browser window.
+const {app, BrowserWindow, dialog, ipcMain} = electron;
 
 const viewer = require('./lib/viewer');
 
